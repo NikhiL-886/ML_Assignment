@@ -1,0 +1,31 @@
+# --- Virtual environment ---
+.venv/
+venv/
+env/
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.Python
+build/
+dist/
+
+
+.ipynb_checkpoints/
+
+raw_dataset/*.csv
+
+
+
+
+
+.vscode/
+.DS_Store
+Thumbs.db
+
+
+.env
+*.env.local
