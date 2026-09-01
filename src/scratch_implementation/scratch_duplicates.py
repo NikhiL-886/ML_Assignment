@@ -1,25 +1,27 @@
 def find_duplicates_scratch(df, id_column='TransactionID'):
     """
     Scratch implementation of Pandas df.duplicated() using Hash Tables.
-    Returns a list of booleans (True if duplicate, False if unique).
+    Converts values to strings to prevent NumPy memory/type mismatch errors.
     """
-    # 1. Isolate the columns we actually want to compare
-    columns_to_check = [col for col in df.columns if col != id_column]
+    # Allow for multiple ID columns to be passed as a list
+    if isinstance(id_column, str):
+        id_column = [id_column]
+        
+    columns_to_check = [col for col in df.columns if col not in id_column]
     
-    # 2. Extract the data (converting to an array makes iteration much faster)
-    subset_values = df[columns_to_check].values
-    
-    seen_signatures = set() # This is our Hash Table
+    seen_signatures = set()
     duplicate_mask = []
     
-    print("Generating hash signatures for all rows...")
+    print("Generating hash signatures for all rows (Stringified)...")
     
-    for row in subset_values:
-        # Convert the row to a tuple. (Lists cannot be hashed because they can change, 
-        # but tuples are locked, so Python can generate a permanent hash for them).
-        row_signature = hash(tuple(row))
+    # df.itertuples() is significantly safer for mixed data types than df.values
+    for row in df[columns_to_check].itertuples(index=False, name=None):
         
-        # Check if this fingerprint exists in our Hash Table (an O(1) instant lookup)
+        # Convert every item in the row to a string before creating the tuple
+        # This guarantees that if it looks identical, it hashes identically
+        stringified_row = tuple(str(item) for item in row)
+        row_signature = hash(stringified_row)
+        
         if row_signature in seen_signatures:
             duplicate_mask.append(True)
         else:
