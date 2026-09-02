@@ -4,6 +4,14 @@ This repository contains a modular, production-grade data preprocessing and feat
 
 ---
 
+## 0. Team Structure
+| Name          | Branch     | Year | Roll No.         |
+| ------------- | ---------- | ---- | ---------------- |
+| Aditya Pratap | B.Tech CSE | 4th  | CSJMA23001390003 |
+| Arpan Singh   | B.Tech CSE | 4th  | CSJMA23001390010 |
+| Nikhil Singh  | B.Tech CSE | 4th  | CSJMA23001390026 |
+
+
 ## 1. Problem Statement
 
 Financial fraud is a critical challenge in electronic commerce. The objective of the IEEE-CIS Fraud Detection problem is to predict whether a given credit card transaction is fraudulent (`isFraud` = 1) or legitimate (`isFraud` = 0) based on a massive, highly anonymized, and heavily imbalanced dataset containing transaction amounts, card properties, digital identities, and high-dimensional engineered features (`V` and `C` columns).
