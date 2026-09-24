@@ -1,0 +1,11 @@
+# Core data processing and numerical computing
+pandas
+numpy
+
+# Data visualization and PDF report generation
+matplotlib
+
+# Notebook execution and kernel support
+jupyter
+notebook
+ipykernel
